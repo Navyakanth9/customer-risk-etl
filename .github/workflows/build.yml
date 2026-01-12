@@ -1,0 +1,24 @@
+name: Build ETL Component
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Run internal ETL buildpack
+      uses: your-org/enterprise-etl-buildpack@v1
+      with:
+        image-name: customer-risk-etl
+        image-tag: ${{ github.sha }}
+
+    - name: Upload ETL artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: etl-artifacts
+        path: dist/
