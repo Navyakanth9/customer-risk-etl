@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Run internal ETL buildpack
-      uses: your-org/enterprise-etl-buildpack@v1
+      uses: Navyakanth9/enterprise-etl-buildpack@v1
       with:
         image-name: customer-risk-etl
         image-tag: ${{ github.sha }}
